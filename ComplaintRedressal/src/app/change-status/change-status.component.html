@@ -1,0 +1,17 @@
+<h1>Change Status of Ticket Id {{this.service.ticket_id}}</h1>
+
+<br><br>
+<form>
+<select name="status" [(ngModel)]="status">
+    <option value="WIP">WIP</option>
+    <option value="RESOLVED">RESOLVED</option>
+
+</select><br><br>
+<button (click)="changeStatus()">Change Status</button>
+
+</form>
+<br><br>
+<b style="font-size:larger;">{{message}}</b>
+
+<br><br>
+<button (click)="bktoengPage()">Set status of other tickets</button>

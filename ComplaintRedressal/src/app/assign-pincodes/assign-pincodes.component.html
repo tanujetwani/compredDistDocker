@@ -1,0 +1,27 @@
+<h1>Assign Pin codes To Manager</h1>
+<br><br>
+<table border="1">
+<tr>
+    <th>Manager Username</th>
+    <th>Pin Code</th>
+</tr>
+
+<tr *ngFor="let p of pincodes" class="two">
+<td>{{p.username}}</td>
+<td>{{p.pin_code}}</td>
+
+<td><form>
+<input type="text" name="pincode" [(ngModel)]="p.pin_code">
+
+</form>
+</td>
+<td><button (click)="setPincode(p.username,p.pin_code)">Set Pin Code</button></td>
+
+</tr>
+</table>
+<br><br>
+
+<b style="font-size: larger;">{{message}}</b>
+<br><br>
+<button (click)="bktoadmindash()">Go To Admin Dashboard</button>
+

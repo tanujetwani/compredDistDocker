@@ -1,0 +1,108 @@
+<h1 align="center">Welcome to Customer Page</h1>
+<br>
+<button *ngIf="this.service.isadmin" style="float: right;" (click)="gotoadmindash()">Go Back To Admin Dashboard</button>
+<h2 align="center">Create Ticket</h2>
+<form>
+  Full Name:<input type="text" name="fullname" [(ngModel)]="ticket.fullname"><br><br>
+  Address:<input type="text" name="address" [(ngModel)]="ticket.address"><br><br>
+  Pincode:<input type="text" name="pincode" [(ngModel)]="ticket.pincode"><br><br>
+  Phone No.<input type="text" name="phone" [(ngModel)]="ticket.phoneNo"><br><br>
+  Type Of Problem :<select name="problem" [(ngModel)]="ticket.typeOfProblem">
+                   <option value="cannot make a call but recieve a call">Cannot make a call But recieve a call</option>
+                   <option value="can make calls ,but cannot recieve calls">Can make calls, but cannot recieve calls</option>
+                   <option value="Neither make or recieve calls">Neither make or recieve calls</option>
+
+  </select>  <br><br>
+  Details :<input type="text" name="details" [(ngModel)]="ticket.details"><br><br>
+ 
+  <button (click)="createTicket()">Create Ticket</button><br><br>
+
+
+</form>
+
+<b style="font-size:larger;">{{message}}</b>
+
+<br><br><br>
+
+<div *ngIf="!this.service.isadmin">
+<h2>View Tickets</h2>
+<button (click)="viewTickets()">View Tickets</button>&nbsp;
+</div>
+
+<div *ngIf="this.service.isadmin">
+<h2>View UPDATE and DELETE Tickets</h2>
+
+<button (click)="viewTickets()">View Tickets</button>&nbsp;
+<button style="float:none;" (click)="updateTicket()">Update Ticket</button>&nbsp;
+<button style="float: none;" (click)="deleteTicket()">Delete Ticket</button>
+</div>
+
+<div *ngIf="viewTicket">
+  
+<table border="1">
+<tr>
+    <th>Full Name</th>
+    <th>Ticket ID</th>
+    <th>Type of Problem</th>
+    <th> Details</th>
+    <th>Status</th>
+</tr>
+<tr *ngFor="let ticket of tickets" class="one">
+<td>{{ticket.fullname}}</td>
+<td>{{ticket.ticket_id}}</td>
+<td>{{ticket.typeOfProblem}}</td>
+<td>{{ticket.details}}</td>
+<td>{{ticket.status}}</td>
+<td *ngIf="ticket.status==='RESOLVED' || ticket.status==='ESCALATED';then feedback;" ></td>
+<ng-template #feedback><!--Feedback : <input type="text" name="feedback1" [(ngModel)]="feedback">-->
+<button (click)="submitFeedback(ticket.ticket_id)" style="color:blue;">Submit Feedback</button>
+<!--<b>{{message}}</b>--></ng-template>
+
+<td *ngIf="ticket.status==='RESOLVED';then registerComp;" ></td>
+<ng-template #registerComp>
+<button (click)="registerComplaint(ticket.ticket_id)" style="color:blue;">Register Complaint</button>
+
+</ng-template>
+
+<!--<td *ngIf="ResolvedEscalated">
+  <form>
+    Feedback:<input type="text" name="feedback" >&nbsp;
+    <button (click)="submitFeedback(ticket.ticket_id)">Submit Feedback</button>
+  </form>&nbsp;
+ 
+</td>-->
+<!--<td>{{message}}</td>-->
+
+<!--A row for update and another row containing delete ticket button if the user is Admin-->
+<!--<td><button *ngIf="isAdmin" (click)="updateTicket(ticket.ticket_id)">Update TICKET</button></td>
+<td><button *ngIf="isAdmin" (click)="deleteTicket(ticket.ticket_id)">DELETE Ticket</button></td>
+</tr>-->
+
+</table>
+
+<!--<button *ngIf="isAdmin" (click)="searchticketToUpdate()">Update Ticket</button>-->
+
+
+
+
+
+</div>
+
+
+<div *ngIf="delTicket">
+<br><br>
+<b style="font-size: larger;">{{delmessage}}</b><br><br>
+<h2>Delete Ticket</h2>
+<br>
+  <form>
+   Enter Ticket Id :<input type="text" name="id" [(ngModel)]="tid"><br><br>
+   <button (click)="delTick()">Delete Ticket</button>
+
+  </form>
+
+
+
+
+
+
+</div>

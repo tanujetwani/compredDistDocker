@@ -1,0 +1,18 @@
+<h1>Set Remark for ticket id {{this.service.ticket_id}}</h1>
+<br><br>
+<form>
+<select name="remark" [(ngModel)]="remark">
+   <option value="Cable Fault, needs to be assgined to Field workers">Cable Fault, Needs to be assigned to Field Workers</option>
+   <option value="Fault At Customers site,needs to be assigned to Field workers">Fault At Customers site,needs to be assigned to Field workers</option>
+</select>
+
+<br><br>
+
+<button (click)="setRmrk()">Set Remark</button>
+
+</form>
+<br><br>
+<b style="font-size: larger;">{{message}}</b>
+
+<br><br>
+<button (click)="bktoengPage()">Go back to Engineer Dashboard</button>

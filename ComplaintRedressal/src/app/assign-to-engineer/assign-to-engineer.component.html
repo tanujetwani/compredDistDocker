@@ -1,0 +1,28 @@
+
+<div *ngIf="engineers">
+<h1>List of Engineers </h1><br><br>
+<ul type="none">
+
+<li *ngFor="let  engr of users">
+
+<label>
+
+    <input type="radio" [value]="engr.username"  name="engineers" (change)="assignedTo(engr.userid,engr.username)">{{engr.username}}
+</label>
+
+
+
+</li>
+
+
+
+
+</ul>
+
+<button (click)="assignedSubmit()">Assign</button>
+</div>
+<br><br><br><br>
+<b style="font-size:larger;">{{message}}</b>
+
+<br><br>
+<button (click)="bkToManagerPg()">Assign other tickets to Engineers</button>

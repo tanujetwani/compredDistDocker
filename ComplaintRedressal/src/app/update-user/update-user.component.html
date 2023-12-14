@@ -1,0 +1,31 @@
+<h1 align="center">Update user</h1>
+
+<br><br>
+<form>
+    Enter Username of User:<input type="text" name="usernm" [(ngModel)]="usernm">
+<button (click)="searchUser()">Search User</button>
+</form>
+<br><br>
+<div *ngIf="userpresent">
+<h1>Details of user {{usernm}}</h1>
+<form>
+Username:{{user.username}}&nbsp;<input type="text" name="username" [(ngModel)]="userUpdated.username">
+Password:{{user.password}}&nbsp;<input type="text" name="password" [(ngModel)]="userUpdated.password">
+Role:{{user.role.roleName}}&nbsp;<select name="role" [(ngModel)]="userUpdated.role.roleName">
+                                 <option value="Admin">Admin</option>
+                                 <option value="Customer">Customer</option>
+                                 <option value="Engineer">Engineer</option>
+                                 <option value="Manager">Manager</option>
+
+                                </select><br><br>
+<button (click)="updateUser()">Update User</button>
+
+
+
+</form>
+
+
+
+</div>
+
+<b style="font-size: larger;">{{message}}</b>

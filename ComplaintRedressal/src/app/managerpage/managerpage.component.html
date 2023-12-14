@@ -1,0 +1,56 @@
+<h1>Welcome to Manager Page</h1>
+<br>
+<button *ngIf="this.service.isadmin" (click)="bktoadmindash()" style="float:right;">Go Back To Admin Dashboard</button><br><br>
+<form>
+
+    <button (click)="viewTickets()">View All Tickets And Status</button>
+</form>
+
+<table border="1" *ngIf="viewTicket">
+<tr>
+<th>Ticket Id</th>
+<th>Pincode of Customer</th>
+<th>Type Of Problem</th>
+<th>Details</th>
+<th>status</th>
+<th>Customer Feedback</th>
+</tr>
+
+<tr *ngFor="let ticket of tickets">
+
+<td>{{ticket.ticket_id}}</td>
+<td>{{ticket.pincode}}</td>
+<td>{{ticket.typeOfProblem}}</td>
+<td>{{ticket.details}}</td>
+<td>{{ticket.status}}</td>
+<td>{{ticket.feedback}}</td>
+
+</tr>
+</table>
+
+<h1>Assign Tickets To engineer</h1>
+<button (click)="assignTickets()">Assign Tickets</button>
+
+<table border="1" *ngIf="assignTicket">
+<tr>
+<th>ticket Id</th>
+<th>PinCode of Customer</th>
+<th>Type of Problem</th>
+<th>Details</th>
+<th>Status</th>
+<th>Engineer Assigned</th>
+</tr>
+
+<tr *ngFor="let ticket of tickets1" class="three">
+<td>{{ticket.ticket_id}}</td>
+<td>{{ticket.pincode}}</td>
+<td>{{ticket.typeOfProblem}}</td>
+<td>{{ticket.details}}</td>
+<td>{{ticket.status}}</td>
+<td *ngIf="ticket.engineer!=null;then usernm;else nousernm"></td>
+<ng-template #usernm>{{ticket.engineer.username}}</ng-template>
+<ng-template #nousernm><b>Null</b></ng-template>
+<td><button (click)="assignToEngineer(ticket.ticket_id)">Assign To Engineer</button></td>
+
+</tr>
+</table>

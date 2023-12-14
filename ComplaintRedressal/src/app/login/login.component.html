@@ -1,0 +1,13 @@
+
+<h1>Login Page</h1>
+
+<form>
+   Username:<input type="text" name="usernm" [(ngModel)]="usernm"><br><br>
+   Password:<input type="password" name="pwd" [(ngModel)]="pwd"><br><br>
+   
+   <button (click)="loginNow()">Login</button>
+</form>
+
+<br><br>
+<b style="font-size: larger;">{{message}}</b>
+

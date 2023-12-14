@@ -1,0 +1,28 @@
+<html>
+<body>
+    <h1>Registration form</h1>
+    <form>
+    Username: <input type="text" name="username" [(ngModel)]="user.username"><br><br>
+    Password : <input type="password" name="pwd" [(ngModel)]="user.password"><br><br>
+    Role: <select name="role" [(ngModel)]="user.role">
+        <option value="Admin">Admin</option>
+        <option value="Customer">Customer</option>
+        <option value="Manager">Manager</option>
+        <option value="Engineer">Engineer</option>
+    </select><br><br>
+    <button (click)="registerNow()">Register</button>
+    </form>
+<br><br>
+<b style="font-size: larger;">{{message}}</b>
+
+<div *ngIf="isAdmin">
+
+    <button (click)="bktoadminPage()">Go Back To Admin Page</button>
+</div>
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,11 @@
+<h1>Submit Feedback for ticket with id {{this.service.ticket_id}}</h1>
+<form>
+<b>Feedback:</b><textarea  rows="8" cols="33" name="feedback" [(ngModel)]="feedback"></textarea><br><br>
+<button (click)="submtFeedbk()">Submit Feedback</button>
+
+</form>
+<br><br>
+<b style="font-size: larger;">{{message}}</b>
+
+<br><br>
+<button (click)="bktocustPage()">Go Back To Customer Dashboard</button>

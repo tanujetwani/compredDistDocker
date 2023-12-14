@@ -1,0 +1,16 @@
+<html>
+  <body>
+<h1 align="center">Welcome to ABC Telecom Complaint Redressal System</h1>
+<br><br>
+<table border="1">
+<tr>
+  <td><a routerLink="/register">Register</a></td>
+  <td><a *ngIf=!this.service.isLoggedIn routerLink="/login">Login</a></td>
+  <td><a *ngIf=this.service.isLoggedIn routerLink="/logout">Logout</a></td>
+</tr>
+
+</table>
+
+<router-outlet></router-outlet>
+</body>
+</html>
