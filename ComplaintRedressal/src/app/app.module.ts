@@ -67,7 +67,7 @@ const routes:Routes=[
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [ComplaintRedressalServiceService],
   bootstrap: [AppComponent]
