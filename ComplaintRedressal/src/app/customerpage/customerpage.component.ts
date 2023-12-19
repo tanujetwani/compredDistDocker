@@ -40,6 +40,7 @@ export class CustomerpageComponent implements OnInit{
   delTicket:boolean=false;
   tid:any;
   delmessage:any;
+  count:number;
   
  public  createTicket(){
          
@@ -53,6 +54,7 @@ export class CustomerpageComponent implements OnInit{
       
     console.log("Inside viewTickets");
       this.viewTicket=true;
+      this.delTicket=false;
       let response=this.service.viewComplaints();
       response.subscribe((data:any)=>{this.tickets=data;
              console.log("Tickets :" +this.tickets);
@@ -106,7 +108,9 @@ export class CustomerpageComponent implements OnInit{
           );
 
         */
+          this.viewTicket=false;
         this.delTicket=true;
+        this.delmessage="";
 
 
   }
@@ -120,8 +124,14 @@ public gotoadmindash(){
 public delTick(){
 
   let response=this.service.delTicket(this.tid);
-  response.subscribe((data:any)=>{ this.tickets=data;
-          this.delmessage="The ticket with id "+this.tid+ " has been deleted";
+  response.subscribe((data:any)=>{// this.tickets=data;
+             this.count=data;
+          //this.delmessage="The ticket with id "+this.tid+ " has been deleted";
+
+          if(this.count===0){
+            this.delmessage="The ticket with id "+ this.tid+ " does not exist";
+          }
+          else {this.delmessage="The ticket with id "+this.tid+ " has been deleted";}
 
 
 });
